@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CanIBreatheNow.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -26,5 +28,18 @@ namespace CanIBreatheNow.Controllers
 
             return View();
         }
+
+        public ActionResult Conditions(String city)
+        {
+            DataProvider prov = new RestDataProvider();
+            var list = Task.Run(() => prov.AllStations()).Result;
+
+            var index = Task.Run(() => prov.StationAirQualityIndex(14)).Result;
+
+            ViewBag.City = city;
+
+            return View();
+        }
+
     }
 }
