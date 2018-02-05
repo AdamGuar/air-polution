@@ -198,11 +198,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\DataProcessor.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AirQualityIndex.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Station.cs" />
+    <Compile Include="Models\StationIndexModel.cs" />
+    <Compile Include="Models\WeatherData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\DataProvider.cs" />
     <Compile Include="Service\RestDataProvider.cs" />

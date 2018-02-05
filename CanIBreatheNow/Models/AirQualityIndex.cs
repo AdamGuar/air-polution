@@ -9,19 +9,23 @@ namespace CanIBreatheNow.Models
     public class AirQualityIndex
     {
         [JsonProperty("stCalcDate")]
-        String IndexDate { get; set; }
+        public String IndexDate { get; set; }
+
+
+        [JsonProperty ("stIndexLevel")]
+        public IndexLvl StIndexLvl { get; set; }
 
         [JsonProperty("so2IndexLevel")]
-        IndexLvl SO2Index { get; set; }
+        public IndexLvl SO2Index { get; set; }
 
         [JsonProperty("no2IndexLevel")]
-        IndexLvl NO2Index { get; set; }
+        public IndexLvl NO2Index { get; set; }
 
         [JsonProperty("pm10IndexLevel")]
-        IndexLvl PM10Index { get; set; }
+        public IndexLvl PM10Index { get; set; }
 
         [JsonProperty("pm25IndexLevel")]
-        IndexLvl PM25Index { get; set; }
+        public IndexLvl PM25Index { get; set; }
         
 
     }
@@ -29,7 +33,7 @@ namespace CanIBreatheNow.Models
 
     public class IndexLvl {
         [JsonProperty("indexLevelName")]
-        String indexLvl { get; set; }
+    public String IndexLvlName { get; set; }
     }
 
 }

@@ -1,4 +1,6 @@
-﻿using CanIBreatheNow.Service;
+﻿using CanIBreatheNow.Logic;
+using CanIBreatheNow.Models;
+using CanIBreatheNow.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,12 +33,15 @@ namespace CanIBreatheNow.Controllers
 
         public ActionResult Conditions(String city)
         {
-            DataProvider prov = new RestDataProvider();
-            var list = Task.Run(() => prov.AllStations()).Result;
-
-            var index = Task.Run(() => prov.StationAirQualityIndex(14)).Result;
+            DataProcessor procesor = new DataProcessor();
+            List<StationIndexModel> stationsIndexes = procesor.GetStationIndexesByCity(city);
+            var conditions = procesor.GetCityWeather(city);
+            var mostFrequentIndex = procesor.GetMostFrequentIndex(stationsIndexes);
 
             ViewBag.City = city;
+            ViewBag.Temperature = conditions._Main.temp;
+            ViewBag.Wind = conditions._Wind.wind;
+            ViewBag.AirIndex = mostFrequentIndex;
 
             return View();
         }

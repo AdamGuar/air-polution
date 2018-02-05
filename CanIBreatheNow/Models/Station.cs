@@ -9,47 +9,47 @@ namespace CanIBreatheNow.Models
     public class Station
     {
         [JsonProperty("id")]
-        int Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("stationName")]
-        String StationName { get; set; }
+        public String StationName { get; set; }
 
         [JsonProperty("gegrLat")]
-        double GegrLat { get; set; }
+        public double GegrLat { get; set; }
 
         [JsonProperty("GegrLon")]
-        double GegrLon { get; set; }
+        public double GegrLon { get; set; }
 
         [JsonProperty("city")]
-        City City { get; set; }
+        public City City { get; set; }
 
         [JsonProperty("addressStreet")]
-        String AddressStreet { get; set; }
+        public String AddressStreet { get; set; }
     }
 
 
     public class City
     {
         [JsonProperty("id")]
-        int Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
-        String Name { get; set; }
+        public String Name { get; set; }
 
         [JsonProperty("commune")]
-        Commune Commune { get; set; }
+        public Commune Commune { get; set; }
     }
 
     public class Commune
     {
         [JsonProperty("communeName")]
-        String CommuneName { get; set; }
+        public String CommuneName { get; set; }
 
         [JsonProperty("districtName")]
-        String DistrictName { get; set; }
+        public String DistrictName { get; set; }
 
         [JsonProperty("provinceName")]
-        String ProvinceName { get; set; }
+        public String ProvinceName { get; set; }
     }
 
 }

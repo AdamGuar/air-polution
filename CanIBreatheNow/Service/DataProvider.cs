@@ -12,5 +12,8 @@ namespace CanIBreatheNow.Service
         Task<List<Station>> AllStations();
 
         Task<AirQualityIndex> StationAirQualityIndex(int stationID);
+
+        Task<WeatherData> WeatherDataByCity(String city);
+
     }
 }
