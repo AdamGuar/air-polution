@@ -42,6 +42,7 @@ namespace CanIBreatheNow.Controllers
             ViewBag.Temperature = conditions._Main.temp;
             ViewBag.Wind = conditions._Wind.wind;
             ViewBag.AirIndex = mostFrequentIndex;
+            ViewBag.Stations = stationsIndexes;
 
             return View();
         }

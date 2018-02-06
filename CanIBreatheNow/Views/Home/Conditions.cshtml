@@ -71,41 +71,23 @@
         <div class="col-lg-8 col-lg-offset-2">
             <h2>Acording to Inspectorate Of Environmental Protection:</h2>
             <p>
-
-                <table>
-                    <tr>
-                        <td><img src="cold/Winter-48.png"></td>
-                        <td>It is cold outstide better take this:</td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <td>
-                        <td>Warm coat</td>
-                        <td><img src="cold/Coat-48.png"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <td>
-                        <td>Warm boots</td>
-                        <td><img src="cold/WinterBoots-48.png"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <td>
-                        <td>A scarf</td>
-                        <td><img src="cold/Scarf-48.png"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <td>
-                        <td>Pair of gloves</td>
-                        <td><img src="cold/ChristmasMitten-48.png"></td>
-                    </tr>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Station Name</th>
+                            <th scope="col">Station Address</th>
+                            <th scope="col">Air Quality Index</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in ViewBag.Stations)
+                    {
+                        <tr>    
+                            <td>@item.StationName</td>
+                            <td>@item.StationAdress</td>
+                            <td>@item.StationIndex.StIndexLvl.IndexLvlName</td>
+                        </tr>
+                    }
                 </table>
-
-
-
-
 
             </p>
             <p>
