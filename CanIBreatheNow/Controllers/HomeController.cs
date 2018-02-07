@@ -33,8 +33,20 @@ namespace CanIBreatheNow.Controllers
 
         public ActionResult Conditions(String city)
         {
+            AirQualityIndexTranslator translator = new AirQualityIndexTranslator();
             DataProcessor procesor = new DataProcessor();
-            List<StationIndexModel> stationsIndexes = procesor.GetStationIndexesByCity(city);
+            List<StationIndexModel> stationsIndexes = new List<StationIndexModel>();
+
+            try {
+                stationsIndexes = procesor.GetStationIndexesByCity(city);
+            }catch(NoDataFoundException e)
+            {
+                StationIndexModel model = new StationIndexModel("No sensor provided for given city","N/A",new AirQualityIndex() { StIndexLvl = new IndexLvl() { IndexLvlName = "No sensor provided for given city" } });
+                stationsIndexes.Add(model);
+            }
+
+            stationsIndexes = translator.TranslateIndexes(stationsIndexes);
+
             var conditions = procesor.GetCityWeather(city);
             var mostFrequentIndex = procesor.GetMostFrequentIndex(stationsIndexes);
 

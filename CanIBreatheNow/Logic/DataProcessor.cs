@@ -16,12 +16,18 @@ namespace CanIBreatheNow.Logic
             List<StationIndexModel> result = new List<StationIndexModel>();
             List<Station> list = Task.Run(() => prov.AllStations()).Result;
             List<Station> filteredList = list.Where(station => station.City.Name.Equals(city)).ToList();
-            filteredList.ForEach(station =>
+            if (filteredList.Any()) { 
+                filteredList.ForEach(station =>
+                {
+                    AirQualityIndex index = Task.Run(() => prov.StationAirQualityIndex(station.Id)).Result;
+                    StationIndexModel stationIndex = new StationIndexModel(station.StationName,station.AddressStreet,index);
+                    result.Add(stationIndex);
+                });
+            }
+            else
             {
-                AirQualityIndex index = Task.Run(() => prov.StationAirQualityIndex(station.Id)).Result;
-                StationIndexModel stationIndex = new StationIndexModel(station.StationName,station.AddressStreet,index);
-                result.Add(stationIndex);
-            });
+                throw new NoDataFoundException($"No data found for city: {city}");
+            }
 
             return result;
         }

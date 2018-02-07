@@ -9,7 +9,7 @@ namespace CanIBreatheNow.Logic
     public class AirQualityIndexTranslator
     {
 
-        public static Dictionary<String, String> dictionary = new Dictionary<String, String>() {
+        public static Dictionary<string, string> dictionary = new Dictionary<string, string>() {
             { "Bardzo dobry" , "Very good" },
             { "Dobry" , "Good" },
             { "Umiarkowany" , "Reasonable" },
@@ -24,9 +24,11 @@ namespace CanIBreatheNow.Logic
 
             indexes.ForEach(i =>
             {
-                String generalIndex = i.StationIndex.StIndexLvl.IndexLvlName;
-                
+                string generalIndex = i.StationIndex.StIndexLvl.IndexLvlName;
+                generalIndex = TranslateIndex(generalIndex) != null ? TranslateIndex(generalIndex) : generalIndex;
+                i.StationIndex.StIndexLvl.IndexLvlName = generalIndex;
 
+                result.Add(i);
 
             });
 
@@ -35,8 +37,8 @@ namespace CanIBreatheNow.Logic
         }
 
 
-        public String TranslateIndex(String index) {
-            String result = "";
+        public String TranslateIndex(string index) {
+            string result = "";
 
             if (!dictionary.TryGetValue(index,out result))
             {

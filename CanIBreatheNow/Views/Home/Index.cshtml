@@ -3,6 +3,8 @@
 }
 
 <!-- Intro Header -->
+<div class="navbar navbar-fixed-top" style="display:none">
+</div>
 <header class="intro">
     <div class="intro-body">
         <div class="container">
@@ -26,4 +28,17 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+
+            $('#city-selection-form').validate({ // initialize the plugin
+                rules: {
+                    city: {
+                        required: true
+                    }
+                }
+            });
+
+        });
+    </script>
 </header>
